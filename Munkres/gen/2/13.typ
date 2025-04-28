@@ -1,6 +1,6 @@
-#import "../preamble.typ": *
+#import "../../preamble.typ": *
 #show: preamble
-= Section 13 -- Basis for a Topology
+=== Section 13 -- Basis for a Topology
   1.
     Let $(X, tau)$ be a topological space; let $A$ be a subset of $X$. Suppose that for each $x in A$ there is some open $U in tau inter cal(P)(A)$ with $x in U$. Show that $A in tau$.
 
@@ -9,50 +9,48 @@
     ]
   3.
     Show that
-      $ tau_(c f) = {U subset.eq X | abs(X without U) < aleph_0} union diameter $
+      $ tau_(c f) = {U subset.eq X mid(|) abs(X without U) < aleph_0} union nothing $
     is a topology. Is
-      $ tau_infinity = {U subset.eq X | abs(X without U) >= aleph_0} union {diameter, X} $
+      $ tau_infinity = {U subset.eq X mid(|) abs(X without U) >= aleph_0} union {nothing, X} $
     a topology?
     #sol[
-      #box[
-        If $|X| < aleph_0$, then $tau_(c f) = cal(P)(X)$, yielding the trivial topology. Suppose instead that $X$ is infinite, and let ${U_lambda}_(lambda in Lambda), {V_i}_(i = 1)^n subset.eq tau_(c f)$. $diameter in tau_(c f)$ by construction, and
-          $ |X without X| = |diameter| = 0 < aleph_0 $
-          so $X in tau_(c f)$ as well. Furthermore, for any $alpha in Lambda$,
-          $
-            abs(X without union.big_(lambda in Lambda) U_lambda) <= abs(X without U_alpha)
-              < aleph_0
-          $
-          making $tau_(c f)$ closed under arbitrary unions. If $V_i = diameter$ for some $i$, $inter.big_(i = 1)^n V_i = diameter in tau_(c f)$, and otherwise, $abs(X without V_i) < aleph_0$, so
-          $
-            abs(X without inter.big_(i = 1)^n V_i) = abs(union.big_(i = 1)^n [X without V_i])
-              <= sum_(i = 1)^n abs(X without V_i)
-              < aleph_0
-          $
-          so $tau_(c f)$ is also closed under finite intersections and is thus a valid topology. #qed
+      If $abs(X) < aleph_0$, then $tau_(c f) = cal(P)(X)$, yielding the discrete topology. Suppose instead that $X$ is infinite, and let ${U_lambda}_(lambda in Lambda), {V_i}_(i = 1)^n subset.eq tau_(c f)$. $nothing in tau_(c f)$ by construction, and
+        $ abs(X without X) = abs(nothing) = 0 < aleph_0 $
+        so $X in tau_(c f)$ as well. Furthermore, for any $alpha in Lambda$,
+        $
+          abs(X without union.big_(lambda in Lambda) U_lambda) <= abs(X without U_alpha)
+            < aleph_0
+        $
+        making $tau_(c f)$ closed under arbitrary unions. If $V_i = nothing$ for some $i$, $inter.big_(i = 1)^n V_i = nothing in tau_(c f)$, and otherwise, $abs(X without V_i) < aleph_0$, so
+        $
+          abs(X without inter.big_(i = 1)^n V_i) = abs(union.big_(i = 1)^n [X without V_i])
+            <= sum_(i = 1)^n abs(X without V_i)
+            < aleph_0
+        $
+        so $tau_(c f)$ is also closed under finite intersections and is thus a valid topology. #qed
 
-        If $abs(X) < aleph_0$, $tau_infinity$ is the trivial topology. Otherwise, for each $x in X$,
-          $
-            abs(X without {x}) = abs(X) - abs({x})
-              = aleph_0 - 1
-              = aleph_0
-          $
-          so each singleton is in $tau_infinity$. Despite this,
-          $
-            abs(X without union.big_(y in X without {x}) {y}) = abs(X without (X without {y}))
-              = abs({y})
-              = 1
-          $
-          meaning that $tau_infinity$ is not closed under arbitrary unions and is thus not a topology.
+      If $abs(X) < aleph_0$, $tau_infinity$ is the trivial topology. Otherwise, for each $x in X$,
+        $
+          abs(X without {x}) = abs(X) - abs({x})
+            = aleph_0 - 1
+            = aleph_0
+        $
+        so each singleton is in $tau_infinity$. Despite this,
+        $
+          abs(X without union.big_(y in X without {x}) {y}) = abs(X without (X without {y}))
+            = abs({y})
+            = 1
+        $
+        meaning that $tau_infinity$ is not closed under arbitrary unions and is thus not a topology.
       ]
-    ]
   4.
     #set enum(numbering: "(a)")
     1.
-      Let #label("4a") ${tau_lambda}_(lambda in Lambda) subset.eq cal(P)lr((cal(P)(X)), size: #115%)$ be a family of topologies on $X$. Show that $tau = inter.big_(lambda in Lambda) tau_lambda$ is also a topology. Is $tau' = union.big_(lambda in Lambda) tau_lambda$?
+      Let #label("4a") ${tau_lambda}_(lambda in Lambda) subset.eq cal(P)bp(cal(P)(X))$ be a family of topologies on $X$. Show that $tau = inter.big_(lambda in Lambda) tau_lambda$ is also a topology. Is $tau' = union.big_(lambda in Lambda) tau_lambda$?
       #sol[
         Let ${U_gamma}_(gamma in Gamma), {V_i}_(i = 1)^n subset.eq tau$. Then each $U_gamma$ and $V_i$ is open in each $tau_lambda$, meaning that the union of the former collection and the intersection of the latter are also in each $tau_lambda$ and thus in the intersection $tau$ as well, making the latter a topology. #qed
 
-        Let $X = {1, 2, 3}$, let $tau_1 = {diameter, {1}, X}$, and let $tau_2 = {diameter, {2}, X}$. These are clearly both valid topologies, so consider $tau' = tau_1 union tau_2$. This includes both ${1}$ and ${2}$ but not their union and is thus not a topology.
+        Let $X = {1, 2, 3}$, let $tau_1 = {nothing, {1}, X}$, and let $tau_2 = {nothing, {2}, X}$. These are clearly both valid topologies, so consider $tau' = tau_1 union tau_2$. This includes both ${1}$ and ${2}$ but not their union and is thus not a topology.
       ]
     2.
       Let ${tau_lambda}_(lambda in Lambda)$ be a family of topologies on $X$. Show that there are a unique smallest topology $tau_Lambda$ finer than and largest topology $tau_0$ coarser than every $tau_lambda$.
@@ -76,15 +74,15 @@
   8.
     #set enum(numbering: "(a)")
     1.
-      Show from Lemma 13.2 that #h(1fr)
-        $ cal(B) = {(a, b) | a < b in QQ} $
+      Show #label("8a") from Lemma 13.2 that #h(1fr)
+        $ cal(B) = {(a, b) mid(|) a < b in QQ} $
         is a basis that generates the standard topology $tau$ on $RR$.
       #sol[
         Let $a < b in RR$ and let $x in (a, b)$. By the density of $QQ$ in $RR$, let $c in [a, x) inter QQ$ and $d in (x, b] inter QQ$. Then $x in (d, e) in cal(B)$. $tau$ is generated by bounded open intervals, so for any $U in tau$ and $x in U$, there is some open interval and thus some element of $QQ$ within $U$ containing $x$, so by Lemma 13.2, $cal(B)$ generates $tau$. #qed
       ]
     2. Show that #h(1fr)
-        $ cal(C) = {[a, b) | a < b in QQ} $
+        $ cal(C) = {[a, b) mid(|) a < b in QQ} $
         does not generate the lower limit topology on $RR$.
       #sol[
-        Let $a < b in RR without QQ$. Then for all $x in [a, b) without QQ$, $a < x$, meaning that there is no element of $cal(C) inter cal(P)lr(([a, b)), size: #115%)$ containing $a$. By Lemma 13.3, the topology generated by $cal(C)$ is not finer than and thus not equal to the lower limit topology. #qed
+        Let $a < b in RR without QQ$. Then for all $x in [a, b) without QQ$, $a < x$, meaning that there is no element of $cal(C) inter cal(P)bp([a, b))$ containing $a$. By Lemma 13.3, the topology generated by $cal(C)$ is not finer than and thus not equal to the lower limit topology. #qed
       ]
