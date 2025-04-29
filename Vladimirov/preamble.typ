@@ -17,6 +17,12 @@
   #let circ = [
     $degree #h(-2mm)$
   ]
+  #let clist(m, body) = [
+    #list(
+      marker: m,
+      body
+    )
+  ]
   #let outlink(lab, display) = [
     #context {
       let matches = query(lab)
@@ -53,7 +59,7 @@
             context {
               let sections = query(
                 heading.where(
-                  level: 3
+                  level: 1
                 )
               ).filter((s) => counter(page).at(s.location()) <= counter(page).get())
               if sections.len() == 0 {

@@ -13,19 +13,19 @@ This document uses the following conventions:
   - The closure of $A$ is denoted $A$ or $"Cl"(A)$.
   - The interior is denoted by $A degree$ or $"Int"(A)$.
   - The set of limit points is denoted $A'$ or $"Lim"(A)$.
-  - The boundary of $A$ is denoted $partial A$ and is defined as $overline(X) without X degree$.
+  - The boundary of $A$ is $partial A eq.delta overline(X) without X degree$.
   - A neighbourhood of $x$ is some $U in cal(P)(X)$ such that there is some $V in cal(P)(U) inter tau$ such that $x in V$.
   - The neighbourhood system about $x$, the set of neighbourhoods of $x$, is denoted $cal(N)(x)$,
-  - The open neighbourhood system about $x$, the set of open neighbourhoods of $x$, is denoted $cal(N)circ (x)$.
+  - The open neighbourhood system about $x$, the set of open neighbourhoods of $x$, is denoted $cal(N)degree (x)$.
   - A punctured neighbourhood of $x$ is some $U without {x}$, where $U in cal(N)(x)$, and the punctured neighbourhood system is denoted $cal(N)^*(x)$.
   - The system of punctured open neighbourhoods is denoted $cal(N)^ast.circle (x)$.
   - $"Cl"$, $"Int"$, $"Lim"$, $partial$, and $cal(N)$ maybe subscripted with either $X$ or $tau$ for clarity.
 - Let ${(X_lambda, tau_lambda)}_(lambda in Lambda)$ be a collection of topological spaces. Their product with the product topology is denoted $product_(lambda in Lambda) X_lambda$, while that with the box topology is denoted $square.big_(lambda in Lambda) X_lambda$.
 - Let $(X, d)$ be a metric space with topology $tau$, let $x in X$, and let $epsilon > 0$.
   - The open ball centred at $x$ with radius $epsilon$ is #h(1fr)
-    $ B(x, epsilon) eq.delta {y in X | d(x, y) < epsilon} $
+    $ B(x, epsilon) eq.delta {y in X mid(|) d(x, y) < epsilon} $
   - Its closed counterpart is
-    $ overline(B)(x, epsilon) eq.delta {y in X | d(x, y) <= epsilon} $
+    $ overline(B)(x, epsilon) eq.delta {y in X mid(|) d(x, y) <= epsilon} $
   - The punctured open ball is given by
-    $ B^*(x, epsilon) eq.delta {y in X | d(x, y) in (0, epsilon)} $
+    $ B^*(x, epsilon) eq.delta {y in X mid(|) d(x, y) in (0, epsilon)} $
   - $B$ may be subscripted by $X$, $d$, or $tau$ for clarity.

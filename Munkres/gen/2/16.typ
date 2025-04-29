@@ -15,8 +15,8 @@
     #sol[
       Let $tau_Y$ and $tau'_Y$ respectively denote the subspace topologies induced by $tau$ and $tau'$. Then
         $
-          tau_Y = {Z inter U (|) U in tau}
-            subset.eq {Z inter U (|) U in tau'}
+          tau_Y = {Z inter U mid(|) U in tau}
+            subset.eq {Z inter U mid(|) U in tau'}
         $
         the former is coarser than the latter. If there is some $U in cal(P)(Y) inter (tau' without tau)$, then clearly this relation is strict.
 
@@ -24,7 +24,7 @@
 
     ]
   4.
-    A map $f: X -> Y$ between topological spaces $(X, tau_X)$ and $(Y, tau_Y)$ is an *open map* when it carries open sets to open sets. Show that the projection maps from $X times Y$ with the product topology $tau_(X times Y)$ are open maps.
+    A map $f: X arrow Y$ between topological spaces $(X, tau_X)$ and $(Y, tau_Y)$ is an *open map* when it carries open sets to open sets. Show that the projection maps from $X times Y$ with the product topology $tau_(X times Y)$ are open maps.
     #sol[
       Let $U in tau_(X times Y)$. By Lemma 13.1, let ${(A_lambda, B_lambda)}_(lambda in Lambda) subset.eq tau_X times tau_Y$ such that
         $ U = union.big_(lambda in Lambda) [A_lambda times B_lambda] $
@@ -64,7 +64,7 @@
       Let $U in tau_2$ and let $x in U$. By Lemma 13.1, let ${(A_lambda, B_lambda)}_(lambda in Lambda) subset.eq tau times tau$ such that
         $ U = union.big_(lambda in Lambda) [A_lambda times B_lambda] $
         and let $alpha in Lambda$ such that $a in A_alpha times B_alpha$.
-      By #outlink(label("8a"), "13.8.(a)"),
+      By #outlink(label("13.8.a"), "13.8.(a)"),
         $ cal(C) = {(a, b) mid(|) a < b in QQ} $
         is a basis for the standard topology $tau$ on $RR$, so by Lemma 13.1, let ${C_n}_(n in N), {D_n}_(n in N) subset.eq cal(C)$ such that
         $

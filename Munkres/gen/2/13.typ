@@ -46,7 +46,7 @@
   4.
     #set enum(numbering: "(a)")
     1.
-      Let #label("4a") ${tau_lambda}_(lambda in Lambda) subset.eq cal(P)bp(cal(P)(X))$ be a family of topologies on $X$. Show that $tau = inter.big_(lambda in Lambda) tau_lambda$ is also a topology. Is $tau' = union.big_(lambda in Lambda) tau_lambda$?
+      Let #label("13.4.a") ${tau_lambda}_(lambda in Lambda) subset.eq cal(P)bp(cal(P)(X))$ be a family of topologies on $X$. Show that $tau = inter.big_(lambda in Lambda) tau_lambda$ is also a topology. Is $tau' = union.big_(lambda in Lambda) tau_lambda$?
       #sol[
         Let ${U_gamma}_(gamma in Gamma), {V_i}_(i = 1)^n subset.eq tau$. Then each $U_gamma$ and $V_i$ is open in each $tau_lambda$, meaning that the union of the former collection and the intersection of the latter are also in each $tau_lambda$ and thus in the intersection $tau$ as well, making the latter a topology. #qed
 
@@ -59,7 +59,7 @@
             $ tau_Lambda = {union.big B mid(|) B subset.eq union.big_(lambda in Lambda) tau_lambda} $
           Clearly, each $tau_lambda subset.eq tau_Lambda$. Let $tau'$ be a topology such that each $tau_lambda subset.eq tau'$, and let $U in tau_Lambda$. Let $B subset.eq cal(B)$ such that $union.big B = U$. Each element of $B$ is open in some $tau_lambda$ and is thus open in $tau'$, so its union $U$ is also in $tau'$; that is, $tau_Lambda subset.eq tau'$.
 
-          Let $tau_0 = inter.big_(lambda in Lambda) tau_lambda$. By #link(label("4a"))[4.(a)], this is a valid topology. Let $tau''$ be a topology contained in each $tau_lambda$. Then for $U in tau''$, $U in tau_lambda$ for each $lambda$, so $tau'' subset.eq tau_0$. #qed
+          Let $tau_0 = inter.big_(lambda in Lambda) tau_lambda$. By #link(label("13.4.a"))[4.(a)], this is a valid topology. Let $tau''$ be a topology contained in each $tau_lambda$. Then for $U in tau''$, $U in tau_lambda$ for each $lambda$, so $tau'' subset.eq tau_0$. #qed
         ]
   5.
     Show that if $cal(A)$ is a basis or subbasis generating $(X, tau)$, then $tau$ is the intersection of all topologies on $X$ containing $cal(A)$.
@@ -74,7 +74,7 @@
   8.
     #set enum(numbering: "(a)")
     1.
-      Show #label("8a") from Lemma 13.2 that #h(1fr)
+      Show #label("13.8.a") from Lemma 13.2 that #h(1fr)
         $ cal(B) = {(a, b) mid(|) a < b in QQ} $
         is a basis that generates the standard topology $tau$ on $RR$.
       #sol[
