@@ -170,3 +170,19 @@
         is open in $(0, 1)$, making $g$ a homeomorphism as well. #qed
     ]
   9.
+    Let ${A_lambda}_(lambda in Lambda)$ be a collection of subsets of $(X, tau_X)$ such that $X = union.big_(lambda in Lambda) A_lambda$, let $(Y, tau_Y)$ be a topological space, and let $f: X arrow Y$ such that each $f|_A_alpha$ is continuous.
+    #set enum(numbering: "(a)")
+    1.
+      Show that if ${A_lambda}_(lambda in Lambda)$ is finite and each $A_lambda$ is closed, then $f$ is continuous.
+      #sol[
+        Let $U subset.eq Y$ be closed. Then by Theorem 18.1, each $f|^(-1)_A_lambda #h(-0.5mm) (U)$ is closed in $A_lambda$, and by theorem 17.3 also in $X$, so
+          $ f^(-1)(U) = union.big_(lambda in Lambda) f|^(-1)_A_lambda #h(-0.5mm) (U) $
+          is closed in $X$ by Theorem 17.1.(c), making $f$ continuous. #qed
+      ]
+    2.
+      Find an example where the collection of closed subsets is countable but $f$ is not continuous.
+      #sol[
+        For $n in NN$, let
+          $ A_n = [frac(1, 2^n) - 1, 1 - frac(1, 2^n)] $
+          and consider $chi_((0, 1)): [0, 1] arrow$
+      ]
