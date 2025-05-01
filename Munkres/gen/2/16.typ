@@ -1,7 +1,8 @@
 #import "../../preamble.typ": *
 #show: preamble
 === Section 16 -- The Subspace Topology
-  1. Show that a subset of a subspace inherits the same topology from both the subspace and the parent space.
+  1.
+    Show #label("16.1") that a subset of a subspace inherits the same topology from both the subspace and the parent space.
     #sol[
       Let $(Y, tau_Y)$ be a subspace of $(X, tau)$ and let $A subset Y$ inherit topologies $tau_A$ from $Y$ and $tau_A'$ from $X$. Then
         $
@@ -11,7 +12,8 @@
         $
         by closure under finite unions. #qed
     ]
-  2. Let $tau$ and $tau'$ be topologies on $X$ with the latter strictly finer than the former. How do their subspace topologies on $Y subset.eq X$ compare?
+  2.
+    Let $tau$ and $tau'$ be topologies on $X$ with the latter strictly finer than the former. How do their subspace topologies on $Y subset.eq X$ compare?
     #sol[
       Let $tau_Y$ and $tau'_Y$ respectively denote the subspace topologies induced by $tau$ and $tau'$. Then
         $

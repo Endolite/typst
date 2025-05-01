@@ -173,7 +173,7 @@
     Let ${A_lambda}_(lambda in Lambda)$ be a collection of subsets of $(X, tau_X)$ such that $X = union.big_(lambda in Lambda) A_lambda$, let $(Y, tau_Y)$ be a topological space, and let $f: X arrow Y$ such that each $f|_A_alpha$ is continuous.
     #set enum(numbering: "(a)")
     1.
-      Show that if ${A_lambda}_(lambda in Lambda)$ is finite and each $A_lambda$ is closed, then $f$ is continuous.
+      Show #label("18.9.a") that if ${A_lambda}_(lambda in Lambda)$ is finite and each $A_lambda$ is closed, then $f$ is continuous.
       #sol[
         Let $U subset.eq Y$ be closed. Then by Theorem 18.1, each $f|^(-1)_A_lambda #h(-0.5mm) (U)$ is closed in $A_lambda$, and by theorem 17.3 also in $X$, so
           $ f^(-1)(U) = union.big_(lambda in Lambda) f|^(-1)_A_lambda #h(-0.5mm) (U) $
@@ -182,7 +182,92 @@
     2.
       Find an example where the collection of closed subsets is countable but $f$ is not continuous.
       #sol[
-        For $n in NN$, let
-          $ A_n = [frac(1, 2^n) - 1, 1 - frac(1, 2^n)] $
-          and consider $chi_((0, 1)): [0, 1] arrow$
+        For $n in NN$, let $ I_n = overline(B)_RR (0, 1 - 2^(-n))$, let $A = RR without (0, 1)$, consider $chi_((0, 1)): RR arrow RR$. This is constant on each $I_n$ and $A$ and thus continuous by Theorem 18.2.(a), but it is discontinuous on
+          $ A union union.big_(n in NN) I_n = RR $
+          since the preimage of the open set $(-1, 1)$ is the closed set ${0, 1}$.
+
       ]
+    3.
+      A collection ${A_lambda}_(lambda in Lambda)$ of subsets of $(X, tau)$ is _locally finite_ when each $x in X$ has some $U in cal(N)(x)$ that intersects only finitely many $A_lambda$.
+
+      Show that if ${A_lambda}_(lambda in Lambda)$ is locally finite and each element closed, then $f$ is continuous.
+      #sol[
+        Let $x in X$ and let $U_x in cal(N)_X (x)$ such that for $lambda$ in some finite $Lambda_x$, $U_x inter A_lambda != emptyset$. By Theorem 17.2, each $U_x inter A_lambda$ is closed in $U_x$. Furthermore,
+          $
+            U_x &= U_x inter union.big_(lambda in Lambda) A_lambda
+                = union.big_(lambda in Lambda) [U_x inter A_lambda]
+                = union.big_(lambda in Lambda_x)  [U_x inter A_lambda] union union.big_(lambda in Lambda without Lambda_x) [U_x inter A_lambda] \
+              &= union.big_(lambda in Lambda_x) [U_x inter A_x] union emptyset
+                = union.big_(lambda in Lambda_x) [U_x inter A_x]
+          $
+          so by #link(label("18.9.a"))[18.9.(a)], $f|_(U_x)$ is continuous, meaning that by Theorem 18.2.(f), $f$ is continuous. #qed
+      ]
+  10.
+    Let $(A, tau_A)$, $(B, tau_B)$, $(C, tau_C)$, and $(D, tau_D)$ be topological spaces, let $f: A arrow B$ and $g: C arrow D$ be continuous. Show that
+      $
+        f times g: A times C &arrow B times D \
+          (a, c) &mapsto bp(f(a)\, g(c))
+      $
+      is continuous in the product topologies $tau_(A times C)$ and $tau_(B times D)$.
+    #sol[
+      For $U in tau_B$,
+        $
+          (f times g)_1^(-1)(U) &= {(a, c) in A times C mid(|) f(a) in U} \
+            &= {a in A mid(|) f(a) in U} times C \
+            &= f^(-1)(U) times C
+              in tau_A times tau_C
+              subset.eq tau_(A times C)
+        $
+        and similarly,
+        $
+          (f times g)_2^(-1)(V) = A times g^(-1)(V)
+            in tau_A times tau_C
+              subset.eq tau_(A times C)
+        $
+        making both component functions and thus, by Theorem 18.4 $f times g$ continuous. #qed
+    ]
+  11.
+    Let $(X, tau_X)$, $(Y, tau_Y)$, and $(Z, tau_Z)$ be topological spaces. $F: X times Y arrow Z$ is _continuous in each variable separately_ when for $y_0 in Y$,
+      $
+        h: X &arrow Z \
+          x &mapsto F(x, y_0)
+      $
+      and for $x_0 in X$,
+      $
+        k: Y &arrow Z \
+          y &mapsto F(x_0, y)
+      $
+      are continuous. Show that continuity implies continuity in each variable separately.
+    #sol[
+      Let $F: X times Y arrow Z$ be continuous, $U in tau_Z$, $x_0 in X$, and $y_0 in Y$. By Lemma 13.1, let ${(A_lambda, B_lambda)}_(lambda in Lambda) subset.eq tau_X times tau_Y$ with
+        $ f^(-1)(U) = union.big_(lambda in Lambda) [A_lambda times B_lambda] $
+      Then
+        $
+          h^(-1)(U) &= {x in X mid(|) F(x, y_0) in U}
+              = {(x, y) in F^(-1)(U) mid(|) y = y_0} \
+            &= pi_1(F^(-1)(U) inter (X times {y_0}))
+              = pi_1(F^(-1)(U)) inter pi_1(X times {y_0}) \
+            &= pi_1(union.big_(lambda in Lambda) [A_lambda times B_lambda]) inter X
+              = union.big_(lambda in Lambda) pi_1(A_lambda times B_lambda)
+              = union.big_(lambda in Lambda) A_lambda
+              in tau_X
+        $
+      Analogously,
+        $
+          k^(-1)(U) = pi_2(F^(-1)(V))
+            in tau_Y
+        $
+        making $F$ continuous in each variable separately. #qed
+    ]
+  13.
+    Let $(A, tau_A)$ be a subspace of $(X, tau_X)$, let $(Y, tau_Y)$ be Hausdorff, and let $f: A arrow Y$ be continuous. Show that if $f$ can be extended to some continuous $g: overline(A) arrow Y$, then $g$ is uniquely determined by $f$.
+    #sol[
+      Let $g, h in Y^(overline(A))$ with $f = g|_A = h|_A$. Suppose that $A != overline(A)$; that is, $A$ is not closed. By Theorem 17.6, $overline(A) without A = A' without A$, so let $x in A' without A$. Suppose further that $g(x) != h(x)$. Since $Y$ is Hausdorff, let $U in cal(N)circ_Y bp(g(x)) without cal(N)circ_Y bp(h(x))$ and $V in cal(N)circ_Y bp(h(x)) without cal(N)circ_Y bp(g(x))$. Since $U inter V = emptyset$ and $g$ and $h$ may only differ on $A' without A$, $f^(-1)(U) inter f^(-1)(V) = emptyset$, but $g^(-1)(U) inter h^(-1)(V) in cal(N)circ_overline(A) (x)$, so there must be some
+        $
+          x in (g^(-1)(U) inter h^(-1)(V) ) inter A
+            = g|^(-1)_A #h(-0.5mm) (U) inter h|^(-1)_A #h(-0.5mm) (V)
+            = f^(-1)(U) inter f^(-1)(V)
+            = emptyset
+        $
+        which is impossible. It must be the case that $g$ and $h$ coincide; that is, that the continuous extension of $f$ be unique. #qed
+    ]
