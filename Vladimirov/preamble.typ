@@ -1,6 +1,6 @@
 // Proofs
   #let sol(text) = [
-    #parbreak() _Solution:_ #text \
+    #parbreak() _Solution_: #text \
   ]
   #let qed = [
     #h(1fr) $square$ #parbreak()

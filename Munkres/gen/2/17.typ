@@ -127,7 +127,7 @@
         and similarly, $pi_2(U) in cal(N)degree (y)$, separating $x$ and $y$ and making $X$ Hausdorff. #qed
     ]
   15.
-    Show that the $T_1$ axioms is equivalent to the condition that all distinct pairs of points have a neighbourhood not containing the other.
+    Show that the $T_1$ axioms are equivalent to the condition that all distinct pairs of points have a neighbourhood not containing the other.
     #sol[
       Suppose that $(X, tau)$ is a $T_1$-space, and let $x != y in X$. Then $X without {y} in cal(N)degree (x)$ and $X without {x} in cal(N)degree (y)$ are neighbourhoods not containing the other point.
 

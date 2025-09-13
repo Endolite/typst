@@ -3,7 +3,7 @@
 
 === Section 19 -- The Product Topology
   1.
-    Let ${(X_lambda, tau_lambda)_(lambda in Lambda)}$ be a family of toplogical spaces, with $tau_lambda$ having basis $cal(B)_lambda$. Prove that
+    Let #label("19.1") ${(X_lambda, tau_lambda)_(lambda in Lambda)}$ be a family of toplogical spaces, with $tau_lambda$ having basis $cal(B)_lambda$. Prove that
       $ cal(B) = {product_(lambda in Lambda) B_lambda mid(|) B_lambda in cal(B)_lambda} $
       is a basis for the box topology $tau_square$, while
       $ cal(C) = {product_(lambda in Lambda) B_lambda mid(|) B_lambda in cal(B)_lambda union {X_lambda}, abs({lambda in Lambda mid(|) B_lambda != X_lambda}) < aleph_0} $
@@ -38,5 +38,14 @@
     ]
   2.
     Let ${(X_lambda, tau_lambda)}_(lambda in Lambda)$ be a collection of topological spaces, and for $lambda in Lambda$ let $(A_lambda, tau_(lambda, A))$ be a subspace of $X_lambda$. Prove that $product_(lambda in Lambda) A_lambda$ is a subspace of $product_(lambda in Lambda) X_lambda$ while $square.big_(lambda in Lambda) A_lambda$ is a subspace of $square.big_(lambda in Lambda) X_lambda$.
+    #sol[
+      Let $U subset.eq product_(lambda in Lambda) A_lambda$, and by #link(label("19.1"))[19.1.] and Lemma 13.1, let $A_lambda in cal(A)_lambda union {A_lambda}$ with
+        $ U = union.big_(gamma in Gamma) product_(lambda in Lambda) A_(gamma, lambda) $
+        where each $cal(A)_lambda$ is a basis for $A_lambda$. For $gamma in Gamma$ and $lambda in Lambda$, let $B_(gamma, lambda) in tau_X$ with $A_(gamma, lambda) = B_(gamma, lambda) inter A_lambda$. For each $gamma in Gamma$, there are only finitely many $lambda in Lambda$ with $A_(gamma, Lambda) != A_lambda$, so there are only finitely many with $B_(lambda, gamma) supset.eq.not A_(lambda, Gamma)$. When $B_(gamma, lambda) supset.eq A_lambda$, it can be assumed without loss of generality that $B_(gamma, lambda) = X_lambda$. Note that
+        $
+          U = union.big_(gamma in gamma)
+        $
+
+    ]
   3.
     Show that if ${(X_lambda, tau_lambda)}$ is a family of Hausdorff spaces, then $product_(lambda in Lambda) X_lambda$ and $square.big_(lambda in Lambda) X_lambda$ are as well.
