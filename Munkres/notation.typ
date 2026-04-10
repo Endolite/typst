@@ -38,7 +38,7 @@ This document uses the following conventions:
   -
     A punctured neighbourhood of $x$ is some $U without {x}$, where $U in cal(N)(x)$, and the punctured neighbourhood system is denoted $cal(N)^*(x)$.
   -
-    The system of punctured open neighbourhoods is denoted $cal(N)^ast.circle (x)$.
+    The system of punctured open neighbourhoods is denoted $cal(N)^ast.o (x)$.
   -
     $"Cl"$, $"Int"$, $"Lim"$, $partial$, and $cal(N)$ maybe subscripted with either $X$ or $tau$ for clarity.
 -

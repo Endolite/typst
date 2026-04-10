@@ -8,12 +8,17 @@
 
 
 // Utilities
+  #import "@preview/shadowed:0.2.0": shadowed
   #let bp(math) = (
     $lr((math), size: #115%)$
   )
   #let bpp(math) = (
     $lr(math, size: #115%)$
   )
+  #let cal(it) = math.class("normal", box({
+    show math.equation: set text(font: "Garamond-Math", stylistic-set: 3)
+    $#math.cal(it)$
+  }) + h(0pt))
   #let circ = [
     $degree #h(-2mm)$
   ]

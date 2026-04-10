@@ -21,3 +21,10 @@ This document uses the following conventions:
   $id$ denotes the identity function and may be subscripted with its domain.
 -
   The restriction of a function $f$ to some subset $A$ of its domain is denoted $f|_A$.
+-
+  The following notation is used for common measures:
+  - $\#$ is the counting measure.
+  - $lambda^n$ is the Lebesgue measure on $RR^n$.
+  - $delta_x$ is the point mass.
+-
+  The collection of Borel subsets of a topological space $(X, tau)$ is denoted $scr(B)(X)$ or $scr(B)(tau)$.

@@ -130,7 +130,7 @@
           f bp([a, b] inter (c'_alpha, d'_alpha)) = cases(
             [0, 1] quad& c'_alpha\, d'_alpha in.not [a, b],
             bpp((f(c'_alpha), 1]) = bp(f(c'_alpha)\, 2)inter [0, 1] quad& c'_alpha in [a, b]\, d'_alpha > 1 ,
-            bpp([0, f(d'_alpha))) = bp(-1\, f(d'_alpha)) inter [0, 1] quad& c'_alpha < a\, d'_alpha in [a, b] \
+            bpp([0, f(d'_alpha))) = bp(-1\, f(d'_alpha)) inter [0, 1] quad& c'_alpha < a\, d'_alpha in [a, b] ,
             bp(f(c'_alpha)\, f(d'_alpha)) quad& c'_alpha\, d'_alpha in [a, b]
           )
         $
