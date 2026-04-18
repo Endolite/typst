@@ -20,6 +20,7 @@
             equiv lambda x. (h compose g) compose f(x)
             equiv^(arrow^eta) (h compose g) compose f
       $
+      #qed
   ]
 2.
   Derive the recursion principles for products and dependent pairs using only projections.
@@ -34,7 +35,7 @@
         rec_(A times B)
           &:equiv lambda (C: cal(U)). lambda (f: A arrow B arrow C). lambda (p: A times B). f bp(pi_1 (p)) bp(pi_2(p)) \
         rec_(sum_(x: A) B(x))
-          &:equiv lambda (C: cal(U)). lambda (f: product_(x: A) [B(x) arrow C]). lambda (p: sum_(x; A) B(x)). f bp(pi_1 (p)) bp(pi_2 (p))
+          &:equiv lambda (C: cal(U)). lambda (f: product_(x: A) [B(x) arrow C]). lambda (p: sum_(x: A) B(x)). f bp(pi_1 (p)) bp(pi_2 (p))
       $
     With this,
       $
@@ -45,6 +46,7 @@
           &equiv f bp(pi_1 bp((a, b))) bp(pi_2 bp((a, b)))
             equiv f(a)(b)
       $
+
   ]
 #colbreak()
 3.
@@ -98,7 +100,7 @@
             equiv f(a)(b)
       $
       as required.
-    // TODO $Sigma$-types
+    // TODO $Sigma$-types after chapter 2
   ]
 #colbreak()
 4.
@@ -114,7 +116,7 @@
       Let
         $
           D
-            &equiv lambda (C: cal(U)). \
+            &:equiv lambda (C: cal(U)). \
               &#h(2em) lambda (c_0: C). \
                 &#h(3em) lambda (c_s: NN arrow C arrow C). \
                   &#h(4em) lambda (n: NN) \
@@ -169,25 +171,68 @@
               &#h(3em)sf("iter")bp(NN times C, (0, c_0), lambda p. bp(succt bp(pi_1 (p)), c_s bp(pi_1 (p), pi_2 (p))), n))) \
             &=_NN c_s bp(n, rec_NN (C, c_0, c_s, n))
         $
-        yielding the desired propositional equality.
+        yielding the desired propositional equality. #qed
     ]
 5.
-  Show that defining $A + B :equiv sum_(x : sf(2)) rec_sf(2) (cal(U), A, B, x)$ yields a definition of $ind_(A times B)$ such that
+  Show that defining $A + B :equiv sum_(x : sf(2)) rec_sf(2) (cal(U), A, B, x)$, where $inl(x) :equiv (0_sf(2), x)$ and $inr(y) :equiv (1_sf(2), y)$, yields a definition of $ind_(A + B)$ such that
     $
-      ind_(A + B): product_(C: (A + B) arrow cal(U)) [product_(x: A) [C bp(inr(x))] arrow product_(y: B) [C bp(inr(y))] &arrow product_(z: A + B) C(z)] \
+      ind_(A + B): product_(C: (A + B) arrow cal(U)) [product_(x: A) [C bp(inl(x))] arrow product_(y: B) [C bp(inr(y))] &arrow product_(z: A + B) C(z)] \
         ind_(A + B) bp(C, g_0, g_1, inl(x)) &equiv g_0 (x) \
         ind_(A + B) bp(C, g_0, g_1, inr(y)) &equiv g_1 (y)
     $
+  #sol[
+    For $C: (A + B) arrow cal(U)$, $g_0: product_(x: A) C bp(inl(x))$, $g_1: product_(y: B) C bp(inr(y))$, $g: product_(p: A + B) C(p)$ with $g bp(inl(x)) :equiv g_0 (x)$ and $g bp(inr(y)) :equiv g_1 (y)$, $x: A$, and $y: B$,
+    $
+      ind_(A + B) bp(C, g_0, g_1, inl(x))
+        &equiv ind_(sum_(x: sf(2)) rec_2 (cal(U), A, B, x)) bp(C, g, (0_sf(2), x))
+          equiv g(0_sf(2))(x)
+          equiv g_0 (x) \
+      ind_(A + B) bp(C, g_0, g_1, inl(y))
+        &equiv ind_(sum_(x: sf(2)) rec_2 (cal(U), A, B, x)) bp(C, g, (1_sf(2), y))
+          equiv g(1_sf(2))(y)
+          equiv g_1 (y)
+    $
+    #qed
+  ]
 6.
-  Show that defining $A times B :equiv product_(x; sf(2)) rec_sf(2)(cal(U), A, B, x)$ yields a definition of $ind_(A times B)$ such that
+  Show that defining $A times B :equiv product_(x: sf(2)) rec_sf(2)(cal(U), A, B, x)$ yields a definition of $ind_(A times B)$ such that
     $
       ind_(A times B): product_(C: (A times B) arrow cal(U)) [product_(x: A) product_(y: B) [C bp((x, y))] &arrow product_(z: A times B) C(z)] \
       ind_(A times B) bp(C, f, (x, y)) &=_(C bp((x, y))) f(x)(y)
     $
+  //  TODO after §2.7
 7.
   Give a derivation of $ind'_(=_A)$ from $ind_(=_A)$ without using universes.
+  // TODO eventually
+#colbreak()
 8.
   Define multiplication and exponentiation on $NN$ using $rec_NN$. Verify that $(NN, +, 0, times, 1)$ is a semiring using only $ind_NN$.
+  #sol[
+    Let
+      $
+        sf("mul") &:equiv rec_NN bp(NN arrow NN, lambda (n: NN). 0, lambda (m : NN). lambda (g: NN arrow NN). lambda (n: NN), n + g(n)) \
+        sf("exp") &:equiv rec_NN bp(NN arrow NN, lambda (n: NN). 1, lambda (m: NN). lambda (g: NN arrow NN). lambda (n: NN). n dot g(n))
+      $
+      with the notation $m dot n :equiv sf("mul")(m, n)$ and $m^n :equiv sf("exp")(n, m)$. Then
+      $
+        m^0
+          &equiv (lambda n. 1)(m)
+            equiv 1 \
+        m^(succt(n))
+          &equiv bp(lambda m. lambda g. lambda n. n dot g(n))bp(n, sf("exp")(n), m)
+            equiv n dot m^n
+      $
+      and
+      $
+        0 dot n
+          &equiv (lambda n. 0)(n)
+            equiv 0 \
+        succt(m) dot n
+          &equiv bp(lambda m. lambda g. lambda n. n + g(n))bp(m, sf("mul")(m), n)
+            = m + (m dot n)
+      $
+      so these behave as expected.
+  ]
 9.
   Define the type family $sf("Fin"): NN arrow cal(U)$ of finite sets and the dependent function $sf("fmax"): product_(n: NN) sf("Fin")(n + 1)$ that returns the largest element of each nonempty finite type.
 10.
