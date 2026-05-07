@@ -122,9 +122,9 @@
                   &#h(4em) lambda (n: NN) \
                     &#h(5em) #sf("iter")\( \
                       &#h(6em) NN times C, \
-                      &#h(6em) (0, c_0) \
+                      &#h(6em) (0, c_0), \
                       &#h(6em) lambda (p: NN times C). \
-                        &#h(7em) bp(succt bp(pi_1 (p)), c_s bp(pi_1 (p), pi_2 (p))) \
+                        &#h(7em) bp(succt bp(pi_1 (p)), c_s bp(pi_1 (p), pi_2 (p))), \
                       &#h(6em) n \
                     &#h(5em)\) \
             &: product_(C: cal(U)) [C arrow (NN arrow C arrow C) arrow NN arrow NN times C]
@@ -132,7 +132,7 @@
         and let
         $
           rec_NN
-            &equiv lambda (C: cal(U)). lambda (c_0: C). lambda (c_s: NN arrow C arrow C). lambda (n: NN). pi_2 bp(D (C, c_0, c_s, n)) \
+            &:equiv lambda (C: cal(U)). lambda (c_0: C). lambda (c_s: NN arrow C arrow C). lambda (n: NN). pi_2 bp(D (C, c_0, c_s, n)) \
             &: product_(C: cal(U)) [C arrow (NN arrow C arrow C) arrow NN arrow C]
         $
       Then for $C: cal(U)$, $c_0: C$, $c_s: NN arrow C arrow C$, and $n: NN$,
@@ -232,6 +232,118 @@
             = m + (m dot n)
       $
       so these behave as expected.
+
+    The axioms for a semiring $(A, +, 0_A, dot, 1_A)$ are given in predicate logic are proven inductively as follows:
+    #set enum(numbering: "(1)")
+    1. $forall a: NN, 0 + a = 0 + a = n$. <1.8.1>
+      -
+        $0 + 0 = 0 + 0 = 0$ by the definition of the recursor.
+      -
+        If $0 + a = a + 0 = a$, then
+          $
+            0 + succt(a)
+              &= succt(a) #flushr[(by definition)] \
+              &= succt(a + 0) #flushr[(by hypothesis)] \
+              &= succt(a) + 0 #flushr[(by definition)] \
+          $
+    2. $forall a, b, c: NN, a + (b + c) = (a + b) + c$. <1.8.2>
+      -
+        For $b, c: NN$
+        $
+          0 + (b + c)
+            &= b + c #flushr[(by #link(<1.8.1>)[(1)])] \
+            &= (0 + b) + c #flushr[(by #link(<1.8.1>)[(1)])] \
+        $
+      -
+        If $a + (b + c) = (a + b) + c$ for all $a, b: NN$, then
+          $
+            succt(a) + (b + c)
+              &= succt bp(a + (b + c)) #flushr[(by definition)] \
+              &= succt bp((a + b) + c #flushr[(by hypothesis)]) \
+              &= succt(a + b) + c #flushr[(by definition)] \
+              &= bp(succt(a) + b) + c #flushr[(by definition)] \
+          $
+    3. $forall a, b: NN, a + b = b + a$.
+      - $forall b: NN, 1 + b = b + 1$. <1.8.3.a>
+        -
+          If $1 + b = b + 1$, then
+            $
+              1 + succt(b)
+                &= 1 + (1 + b) #flushr[(by definition)] \
+                  &= 1 + (b + 1) #flushr[(by hypothesis)] \
+                  &= (1 + b) + 1 #flushr[(by #link(<1.8.2>)[(2)])]] \
+                  &= succt(b) + 1 #flushr[(by definition)] \
+            $
+      -
+        If $a + b = b + a$ for all $b: NN$, then
+        $
+          succt(a) + b
+            &= (1 + a) + b #flushr[(by definition)] \
+            &= 1 + (a + b) #flushr[(by #link(<1.8.2>)[(2)])] \
+            &= 1 + (b + a) #flushr[(by hypothesis)] \
+            &= (b + a) + 1 #flushr[(by #link(<1.8.3.a>)[base])] \
+            &= b + (a + 1) #flushr[(by #link(<1.8.2>)[(2)])] \
+            &= b + (1 + a) #flushr[(by #link(<1.8.3.a>)[base])] \
+            &= b + succt(a) #flushr[(by definition)]
+        $
+    4. $forall a: NN$, $1 dot a = a dot 1 = a$. <1.8.4>
+      #clist(markers: ([(4')], []), [
+        1. $forall a: NN, 0 dot a = a dot 0 = 0$. <1.8.4.a>
+          -
+            By definition, $0 dot 0 = 0$.
+          -
+            If $0 dot a = a dot 0 = 0$, then
+              $
+                0 dot succt(a)
+                  &= 0 + (0 dot a) #flushr[(by #link(<1.8.1>)[(1)])] \
+                  &= 0 + 0 #flushr[(by definition)] \
+                  &= 0 #flushr[(by #link(<1.8.1>)[(1)])] \
+                  &= succt(a) dot 0 #flushr[(by definition)] \
+              $
+        -
+          $1 dot 0 = 0 = 0 dot 1$ by #link(<1.8.4.a>)[(4')]
+        -
+          If $1 dot a = a dot 1 = a$, then
+            $
+              1 dot succt(a)
+                &= 1 + (1 dot a) #flushr[(by definition)] \
+                &= 1 + a #flushr[(by base)] \
+                &= succt(a) #flushr[(by definition)]
+            $
+      ])
+    5. $forall a, b, c: NN, a dot (b + c) = (a dot b) + (a dot c)$.
+    -
+      $
+        a dot (0 + c)
+          equiv a dot c
+          equiv 0 + (a dot c)
+          equiv 0 +
+      $
+    -
+      If $a dot (b + c) equiv $
+    - $forall a, b, c: NN$, $a dot (b dot c) = (a dot b) dot c$.
+      -
+        $
+          (a dot 0) dot c
+            &= 0 dot c
+              = 0
+              = a dot 0
+              = a dot (0 dot c)
+        $
+      -
+        If $(a dot b) dot c = a dot (b dot c)$ for all $a, c: NN$, then
+          $
+
+          $
+    - $forall a, b, c: NN, (a + b) dot c = (a dot c) + (b dot c)$.
+    - $forall a, b: NN$, $a dot b = b dot a$.
+      - $0 dot b = 0 = b dot 0$.
+      -
+        If $a dot b = b dot a$, then
+          $
+            succt(a) dot b =
+          $
+
   ]
 9.
   Define the type family $sf("Fin"): NN arrow cal(U)$ of finite sets and the dependent function $sf("fmax"): product_(n: NN) sf("Fin")(n + 1)$ that returns the largest element of each nonempty finite type.
@@ -244,14 +356,24 @@
     $
     is definable using only $rec_NN$.
 11.
-  Show that for $A: cal(U)$, $not not not A arrow not A$.
+  Show that for $A: cal(U)$, $not not not A arrow not A$ is inhabited.
 12.
   Using the propositions-as-types interpretation, derive the following tautologies:
   #set enum(numbering: "(i)")
   1.
     $A arrow.r.double (B arrow.r.double A)$.
+    #sol[
+      Consider $bp(lambda (a: A). lambda (b: B). a): A arrow B arrow A$. #qed
+    ]
   2.
     $A arrow.r.double not not A$.
+    #sol[
+      $not not A equiv (not A) arrow sf(0) equiv (A arrow sf(0)) arrow sf(0)$, so consider
+        $
+          bp(lambda (a: A). lambda (f: A arrow 0). f(a)): A arrow (A arrow sf(0)) arrow sf(0)
+        $
+        #qed
+    ]
   3.
     $(not A or not B) arrow.r.double not(A and B)$.
 13.
